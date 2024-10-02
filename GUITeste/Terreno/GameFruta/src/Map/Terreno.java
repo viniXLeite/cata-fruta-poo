@@ -6,13 +6,51 @@ public class Terreno {
 	private Chao[][] tabuleiro;
 	private int linhas, colunas;
 	
-	public Terreno(int m, int numPedras) {
+	public Terreno(int m, int numPedras, String[] nomeArvores, int[] quantidadeArvores, int quantidadeMaxArvores, int frutasNoChao) {
 		this.linhas = m;
 		this.colunas = m;
 		tabuleiro = new Chao[linhas][colunas];
+		inicializarTerreno(numPedras, nomeArvores, quantidadeArvores, quantidadeMaxArvores, frutasNoChao);
 	}
 	
-	private void inicializarTerreno(int numPedras) {
+	public void mapeiaArvore(String nomeArvore, int quantidadeArvores, Random random) {
+		int arvoresColocadas = 0;
+		
+		while(arvoresColocadas < quantidadeArvores) {
+			int i_arvore = random.nextInt(linhas);
+			int j_arvore = random.nextInt(colunas);
+			
+			if(tabuleiro[i_arvore][j_arvore] instanceof ChaoGramado) {
+				
+				
+				if(nomeArvore == "laranja") {
+					tabuleiro[i_arvore][j_arvore].setArvore(new Laranjeira());
+				}
+				if(nomeArvore == "abacate") {
+					tabuleiro[i_arvore][j_arvore].setArvore(new Abacateiro());
+				}
+				
+				if(nomeArvore == "coco") {
+					tabuleiro[i_arvore][j_arvore].setArvore(new Coqueiro());
+				}
+				
+				if(nomeArvore == "acerola") {
+					tabuleiro[i_arvore][j_arvore].setArvore(new Aceroleiro());
+				}
+				
+				if(nomeArvore == "amora") {
+					tabuleiro[i_arvore][j_arvore].setArvore(new Amoreiro());
+				}
+				
+				if(nomeArvore == "goiaba") {
+					tabuleiro[i_arvore][j_arvore].setArvore(new Goiabeira());
+				}
+			}
+		}
+		
+	}
+	
+	private void inicializarTerreno(int numPedras, String[] nomeArvores, int[] quantidadeArvores, int quantidadeMaxArvores, int frutasNoChao) {
 		Random random = new Random();
 		int pedrasColocadas = 0;
 		
@@ -36,6 +74,13 @@ public class Terreno {
 				}
 			}
 		}
+		
+		
+		for(int i = 0; i < quantidadeMaxArvores; i++) {
+			mapeiaArvore(nomeArvores[i], quantidadeArvores[i], random);
+		}
+		
+		
 		
 	}
 	
