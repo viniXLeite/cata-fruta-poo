@@ -1,4 +1,5 @@
 package tela;
+import Map.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -10,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
@@ -22,7 +24,7 @@ public class primeiraTela {
 	private JLabel lblNewLabel_2;
 	private JLabel lblNewLabel_3;
 	private JTextField jogador1Nome, jogador2Nome;
-
+	private Path path;
 	/**
 	 * Launch the application.
 	 */
@@ -42,14 +44,15 @@ public class primeiraTela {
 	/**
 	 * Create the application.
 	 */
-	public primeiraTela() {
+	public primeiraTela() throws IOException{
 		initialize();
+		this.path = null;
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize() throws IOException {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 497, 340);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -109,7 +112,13 @@ public class primeiraTela {
 		frame.getContentPane().add(botaoIniciar);
 		
 		botaoUpload.addActionListener(e -> carregarTerreno());
-		botaoIniciar.addActionListener(e -> iniciarJogo());
+		botaoIniciar.addActionListener(e -> {
+			try {
+				iniciarJogo();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		});
 	}
 	
 	// Método para carregar o terreno de um arquivo
@@ -119,22 +128,21 @@ public class primeiraTela {
 	    if (option == JFileChooser.APPROVE_OPTION) {
 	        File file = fileChooser.getSelectedFile();
 	        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-	            String line;
-	            StringBuilder terreno = new StringBuilder();
-	            while ((line = reader.readLine()) != null) {
-	                terreno.append(line).append("\n");
-	            }
-	            textoAlerta.setText(terreno.toString()); // Exibe o conteúdo no JTextArea
 	            JOptionPane.showMessageDialog(frame, "Terreno carregado com sucesso."); // Corrigido
+				System.out.println(file.toPath());
+				this.path = file.toPath();
 	        } catch (IOException ex) {
 	            JOptionPane.showMessageDialog(frame, "Erro ao carregar o terreno."); // Corrigido
+				this.path = null;
 	        }
-	    }
+	    }else {
+			this.path = null;
+		}
 	}
 	
 	
     // Método para iniciar o jogo
-    private void iniciarJogo() {
+    private void iniciarJogo() throws IOException {
         String nomeJogador1 = textField.getText();
         String nomeJogador2 = textField_1.getText();
         if (nomeJogador1.isEmpty() || nomeJogador2.isEmpty()) {
@@ -142,8 +150,11 @@ public class primeiraTela {
             return;
         }
 
+		String newPath = path.toString();
+		InicializarMap.inicilizarTerreno(newPath);	
+
         // Iniciar o jogo e atualizar o painel de status
-        String status = "Jogador 1: " + nomeJogador1 + "\nJogador 2: " + nomeJogador2 + "\nTerreno:\n" + textoAlerta.getText();
-        statusPainel.setText(status);
+        //String status = "Jogador 1: " + nomeJogador1 + "\nJogador 2: " + nomeJogador2 + "\nTerreno:\n" + textoAlerta.getText();
+        //statusPainel.setText(status);
     }
 }

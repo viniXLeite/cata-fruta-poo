@@ -16,7 +16,7 @@ public class Leitura {
     public String ler() throws IOException {
         String linha = this.buffRead.readLine();
         if (linha != null) {
-            // System.out.println(linha);
+            System.out.println(linha);
             return linha;
         }else {
             return null;

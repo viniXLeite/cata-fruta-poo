@@ -2,10 +2,8 @@ package Map;
 
 import java.io.IOException;
 
-public class Main {
-
-	public static void main(String[] args) throws IOException {
-		String path = "src\\Map\\teste.txt";
+public class InicializarMap {
+    public static void inicilizarTerreno(String path) throws IOException{
 		Leitura Leitor = new Leitura(path);
 		String linha;
 		String nomeArvores[];
@@ -35,6 +33,5 @@ public class Main {
 
 		Terreno mapa = new Terreno(dimensao, pedras, nomeArvores, quantidadeArvores, quantidadeMaximaArvores, frutasNoChao);
 		Leitor.fechar();
-	}
-
+    }
 }
