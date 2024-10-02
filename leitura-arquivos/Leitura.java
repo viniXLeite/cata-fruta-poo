@@ -3,8 +3,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Leitura {
-    String path;
-    BufferedReader buffRead;
+    private String path;
+    private BufferedReader buffRead;
 
     public Leitura(String path) throws IOException{
         this.path = path;
@@ -14,11 +14,18 @@ public class Leitura {
     public String ler() throws IOException {
         String linha = this.buffRead.readLine();
         if (linha != null) {
-            System.out.println(linha);
+            // System.out.println(linha);
             return linha;
         }else {
             return null;
         }
+    }
+
+    public int numeroNaLinha(String linha) {
+        String palavras[] = new String[2];
+        palavras = linha.split(" ");
+        int num = Integer.valueOf(palavras[1]);
+        return num;
     }
     
     public void fechar() throws IOException {
