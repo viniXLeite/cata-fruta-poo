@@ -2,6 +2,9 @@ package Map;
 
 import java.io.IOException;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 public class InicializarMap {
     public static void inicilizarTerreno(String path) throws IOException{
 		Leitura Leitor = new Leitura(path);
@@ -32,6 +35,9 @@ public class InicializarMap {
 		int mochila = Leitor.numeroNaLinha(linha);
 
 		Terreno mapa = new Terreno(dimensao, pedras, nomeArvores, quantidadeArvores, quantidadeMaximaArvores, frutasNoChao);
+		InicializationInterface a1 = new InicializationInterface();
+		a1.tabuleiroGInterface(dimensao, mapa);
+		
 		Leitor.fechar();
     }
 }

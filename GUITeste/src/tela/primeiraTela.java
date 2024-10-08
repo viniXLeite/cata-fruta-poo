@@ -1,5 +1,7 @@
 package tela;
 import Map.*;
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -14,6 +16,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Graphics;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
 
 public class primeiraTela {
 
@@ -151,10 +156,13 @@ public class primeiraTela {
         }
 
 		String newPath = path.toString();
-		InicializarMap.inicilizarTerreno(newPath);	
+		InicializarMap.inicilizarTerreno(newPath);
+		//tabuleiroGInterface();
 
         // Iniciar o jogo e atualizar o painel de status
         //String status = "Jogador 1: " + nomeJogador1 + "\nJogador 2: " + nomeJogador2 + "\nTerreno:\n" + textoAlerta.getText();
         //statusPainel.setText(status);
     }
+    
+    
 }

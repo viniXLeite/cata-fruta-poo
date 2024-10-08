@@ -1,8 +1,14 @@
 package Map;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 public abstract class Chao {
+	public BufferedImage image;
     private String tipo;
-    private Arvore arvore;
 
     // Construtor
     public Chao(String tipo) {
@@ -18,11 +24,5 @@ public abstract class Chao {
         this.tipo = tipo;
     }
     
-    public Arvore getArvore(){
-    	return arvore;
-    }
     
-    public void setArvore(Arvore arvore) {
-    	this.arvore = arvore;
-    }
 }
