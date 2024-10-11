@@ -3,6 +3,7 @@ import Frutas.*;
 import Arvores.*;
 import Chao.*;
 import Imagens.*;
+import LeituraArquivos.Escrita;
 
 
 import java.awt.Color;
@@ -29,7 +30,7 @@ public class Terreno {
 	
 	
 	
-	public Terreno(int m, int numPedras, String[] nomeArvores, int[] quantidadeArvores, int quantidadeMaxArvores, int frutasNoChao) {
+	public Terreno(int m, int numPedras, String[] nomeArvores, int[] quantidadeArvores, int quantidadeMaxArvores, int frutasNoChao) throws IOException {
 		this.linhas = m;
 		this.colunas = m;
 		tabuleiro = new Chao[linhas][colunas];
@@ -199,15 +200,18 @@ public class Terreno {
 		
 	}
 	
-	void inicializarTerreno(int m, int numPedras, String[] nomeArvores, int[] quantidadeArvores, int quantidadeMaxArvores, int frutasNoChao) {
+	void inicializarTerreno(int m, int numPedras, String[] nomeArvores, int[] quantidadeArvores, int quantidadeMaxArvores, int frutasNoChao) throws IOException{
+		Escrita escrever = new Escrita("terrenoGeradoTeste.txt");
 
 	    inicializarComponentsMap(m, numPedras, nomeArvores, quantidadeArvores, quantidadeMaxArvores, frutasNoChao);
 
 	    for (int i = 0; i < m; i++) {
+			if (i != 0)
+				escrever.pulaLinha();
 	        for (int j = 0; j < m; j++) {
-
 	            if (tabuleiro[i][j] instanceof ChaoRochoso) {
 	                System.out.print("P ");
+					escrever.escreve("Pe ");
 	            }
 	            // Verifica se é uma instância de ChaoGramado e se tem uma árvore
 	            else if (tabuleiro[i][j] instanceof ChaoGramado) {
@@ -219,38 +223,47 @@ public class Terreno {
 	                	
 	                	if(nomeArvore.equals("laranja")) {
 	                		System.out.print("l ");
+							escrever.escreve("La ");
 	                	}
 	                	else if(nomeArvore.equals("abacate")){
 	                		System.out.print("a ");
+							escrever.escreve("Ab ");
 	                	}
 	                	else if(nomeArvore.equals("coco")){
 	                		System.out.print("c ");
+							escrever.escreve("Co ");
 	                	}
 	                	else if(nomeArvore.equals("acerola")){
 	                		System.out.print("ac ");
+							escrever.escreve("Ac ");
 	                	}
 	                	else if(nomeArvore.equals("amora")){
 	                		System.out.print("am ");
+							escrever.escreve("Am ");
 	                	}
 	                	else {
 	                		System.out.print("G ");
+							escrever.escreve("Gr ");
 	                	}
 	                	
 	                } 
 	                else if(gramado.getFruta() instanceof Maracuja) {
 	                	System.out.print("M ");
+						escrever.escreve("Ma ");
 	                }
 	                else {
 	                    System.out.print("g ");
+						escrever.escreve("Gr ");
 	                }
 	            } else {
 	                System.out.print("g ");
+					escrever.escreve("Gr ");
 	            }
 
 	        }
 	        System.out.println();
 	    }
-	    
+	    escrever.fechar();
 	}
 	
 	
