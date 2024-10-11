@@ -14,16 +14,30 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+
+/**
+ * A classe {@code InicializationInterface} é responsável por criar a interface gráfica do jogo "Cata-Fruta".
+ * Esta classe contém métodos para inicializar a janela do jogo e exibir o tabuleiro na interface.
+ */
+
+
 public class InicializationInterface {
 	public BufferedImage image;
 		
+	
+	 /**
+     * Inicializa a interface gráfica do tabuleiro do jogo.
+     * 
+     * @param m O tamanho do tabuleiro.
+     * @param t O objeto {@code Terreno} que representa o estado do tabuleiro do jogo.
+     */
+	
 	    public void tabuleiroGInterface(int m, Terreno t) {
 	    	
-	    	JFrame frame = new JFrame("Cata-Fruta");
+	    	JFrame frame = new JFrame("Cata-Fruta"); 
 	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        frame.setResizable(true);
+	        frame.setResizable(false);
 	        
-	        // Definir o layout do JFrame como BorderLayout
 	        frame.setLayout(new BorderLayout());
 
 	        // Criar o GamePanel e associar o terreno
@@ -43,34 +57,7 @@ public class InicializationInterface {
 	        frame.setVisible(true);
 	        
 	        
-	      /*  //frame.setUndecorated(true);
-	        JPanel pn = new JPanel() {
-	            @Override
-	            public void paint(Graphics g) {
-	            	super.paint(g);
-	            	Graphics2D g2 = (Graphics2D) g;
-	            	
-	            	
-	                boolean green = true;
-	                for (int i = 0; i < m; i++) {
-	                    for (int j = 0; j < m; j++) {
-	                        if (green) {
-	                            g.setColor(Color.LIGHT_GRAY);
-	                        } else {
-	                            g.setColor(Color.GRAY);
-	                        }
-	                        g.fillRect(i * 64, j * 64, 64, 64);
-	                        green = ! green;
-	                    }
-	                    green = !green;  // Alterna a cor a cada nova linha
-	                }
-	                
-	                
-	                
-	            }
-	            */
-	        //};
-
+	      
 	        
 	    }
 }

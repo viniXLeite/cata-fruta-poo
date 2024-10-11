@@ -4,6 +4,7 @@ import Arvores.*;
 import Chao.*;
 import Imagens.*;
 
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,8 +17,13 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 
+/**
+ * Classe que representa o terreno, contendo um tabuleiro de células do tipo Chao.
+ * As células podem ser grama ou rocha, e podem conter árvores e frutas.
+ */
+
 public class Terreno {
-	public BufferedImage grama, pedra, aceroleiro, abacateiro, amoreira, coqueiro;
+	public BufferedImage grama, pedra, aceroleiro, abacateiro, amoreira, coqueiro, goiabeira, maracuja, laranjeira;
 	private Chao[][] tabuleiro;
 	private int linhas, colunas;
 	
@@ -37,6 +43,10 @@ public class Terreno {
 			abacateiro = ImageIO.read(getClass().getResourceAsStream("/Imagens/abacateiro.png"));
 			amoreira = ImageIO.read(getClass().getResourceAsStream("/Imagens/amoreira.png"));
 			coqueiro = ImageIO.read(getClass().getResourceAsStream("/Imagens/coqueiro.png"));
+			goiabeira = ImageIO.read(getClass().getResourceAsStream("/Imagens/goiabeira.png"));
+			maracuja = ImageIO.read(getClass().getResourceAsStream("/Imagens/fruta_maracuja.png"));
+			laranjeira = ImageIO.read(getClass().getResourceAsStream("/Imagens/laranjeira.png"));
+			
 		}
 		catch(IOException e) {
 			e.printStackTrace();
@@ -177,17 +187,13 @@ public class Terreno {
 			}
 		}
 		
-		//for(int i = 0; i < quantidadeMaxArvores; i++) {
-			mapeiaArvore(nomeArvores[0], 2, frutasNoChao);
-			mapeiaArvore(nomeArvores[1], 2, frutasNoChao);
-			mapeiaArvore(nomeArvores[2], 2, frutasNoChao);
-			mapeiaArvore(nomeArvores[3], 1, frutasNoChao);
-			mapeiaArvore(nomeArvores[4], 1,  frutasNoChao);
-			mapeiaArvore(nomeArvores[5], 1, frutasNoChao);
+		for(int i = 1; i < quantidadeMaxArvores; i++) {
+			mapeiaArvore(nomeArvores[i], quantidadeArvores[i], frutasNoChao);
+		}
+		
+		
 			
-			mapeiaFrutaOuro(2, 1);
-			
-		//}
+			mapeiaFrutaOuro(2, 1);	
 		
 		
 		
@@ -251,11 +257,57 @@ public class Terreno {
 	
 	public void draw(Graphics2D g) {
 		
+		for (int i = 0; i < linhas; i++) {
+	        for (int j = 0; j < colunas; j++) {
+
+	            if (tabuleiro[i][j] instanceof ChaoRochoso) {
+	            	g.drawImage(pedra, i * 128, j * 128, 128, 128, null);
+	            }
+	            // Verifica se é uma instância de ChaoGramado e se tem uma árvore
+	            else if (tabuleiro[i][j] instanceof ChaoGramado) {
+	                ChaoGramado gramado = (ChaoGramado) tabuleiro[i][j];
+	                if (gramado.getArvore() != null) {
+	                	
+	                	Arvore arv = gramado.getArvore();
+	                	String nomeArvore = arv.toString();
+	                	
+	                	if(nomeArvore.equals("laranja")) {
+	                		g.drawImage(laranjeira, i * 128, j * 128, 128, 128, null);
+	                	}
+	                	else if(nomeArvore.equals("abacate")){
+	                		g.drawImage(abacateiro, i * 128, j * 128, 128, 128, null);
+	                	}
+	                	else if(nomeArvore.equals("coco")){
+	                		g.drawImage(coqueiro, i * 128, j * 128, 128, 128, null);
+	                	}
+	                	else if(nomeArvore.equals("acerola")){
+	                		g.drawImage(aceroleiro, i * 128, j * 128, 128, 128, null);
+	                	}
+	                	else if(nomeArvore.equals("amora")){
+	                		g.drawImage(amoreira, i * 128, j * 128, 128, 128, null);
+	                	}
+	                	else {
+	                		g.drawImage(goiabeira, i * 128, j * 128, 128, 128, null);
+	                	}
+	                	
+	                } 
+	                else if(gramado.getFruta() instanceof Maracuja) {
+	                	g.drawImage(maracuja, i * 128, j * 128, 128, 128, null);
+	                }
+	                else {
+	                	g.drawImage(grama, i * 128, j * 128, 128, 128, null);
+	                }
+	            } else {
+	            	g.drawImage(grama, i * 128, j * 128, 128, 128, null);
+	            }
+
+	        }
+	        
+	    }
+	    
+	}
 		
-		if (grama == null) {
-	        System.out.println("Erro: Imagem não carregada.");
-	    } else {
-			boolean green = true;
+		/*
 	        for (int i = 0; i < linhas; i++) {
 	            for (int j = 0; j < colunas; j++) {
 	                if (tabuleiro[i][j] instanceof ChaoGramado) {
@@ -282,23 +334,8 @@ public class Terreno {
 	                }
 	                
 	                
-	                
-	                //green = ! green;
-	            }
-	            //green = !green;  // Alterna a cor a cada nova linha
-	        }
-	    }
-        
-        /*
-        for(int i = 0; i < linhas; i++) {
-        	for(int j = 0; j < colunas; j++) {
-        		if(tabuleiro[i][j] instanceof ChaoGramado) {
-        			g.setColor(Color.BLACK);
-        		}
-        	}
-        }
-        */
-        
+	                */
+	
         
         
 	}
@@ -306,7 +343,3 @@ public class Terreno {
 
 
 	
-	
-	
-	
-}

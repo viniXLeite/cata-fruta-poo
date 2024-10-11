@@ -7,6 +7,14 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+
+
+/**
+ * Classe responsável por inicializar o terreno a partir de um arquivo
+ * e criar a interface gráfica do jogo.
+ */
+
+
 public class InicializarMap {
     public static void inicilizarTerreno(String path) throws IOException{
 		Leitura Leitor = new Leitura(path);
@@ -15,7 +23,7 @@ public class InicializarMap {
 		int quantidadeArvores[]; 
 		nomeArvores = new String[7];
 		quantidadeArvores = new int[7];
-		int frutasNoChao = 0, quantidadeMaximaArvores = 0;
+		int frutasNoChao = 0, quantidadeMaximaArvores = 7;
 		String palavras[] = new String[3];
 		// leitura do arquivo
 		// Dimensao e numero de pedras

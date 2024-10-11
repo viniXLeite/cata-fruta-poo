@@ -19,6 +19,14 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 
+
+/**
+ * Classe que representa a tela inicial do jogo.
+ * 
+ * <p>A classe {@code primeiraTela} é responsável por criar a interface gráfica
+ * inicial onde os jogadores podem inserir seus nomes e fazer o upload do terreno.</p>
+ */
+
 public class primeiraTela {
 
 	public JFrame frame;
@@ -35,6 +43,16 @@ public class primeiraTela {
 		this.path = null;
 	}
 
+	
+	/**
+     * Inicializa os componentes da interface gráfica.
+     * 
+     * <p>Este método configura o quadro, os campos de texto, os rótulos e os botões
+     * da tela inicial.</p>
+     * 
+     * @throws IOException Se ocorrer um erro durante a configuração inicial.
+     */
+	
 	private void initialize() throws IOException {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 497, 340);
@@ -104,6 +122,15 @@ public class primeiraTela {
 		});
 	}
 	
+	/**
+     * Método para carregar o terreno de um arquivo.
+     * 
+     * <p>Este método permite que o usuário selecione um arquivo para carregar o terreno.
+     * Se o arquivo for carregado com sucesso, exibe uma mensagem de confirmação.</p>
+     */
+
+	
+	
 	// Método para carregar o terreno de um arquivo
 	private void carregarTerreno() {
 	    JFileChooser fileChooser = new JFileChooser();
@@ -123,6 +150,15 @@ public class primeiraTela {
 		}
 	}
 	
+	
+	/**
+     * Método para iniciar o jogo.
+     * 
+     * <p>Verifica se os nomes dos jogadores foram inseridos e se o terreno foi carregado.
+     * Se tudo estiver correto, inicializa o jogo.</p>
+     * 
+     * @throws IOException Se ocorrer um erro ao iniciar o jogo.
+     */
 	
     // Método para iniciar o jogo
     private void iniciarJogo() throws IOException {
