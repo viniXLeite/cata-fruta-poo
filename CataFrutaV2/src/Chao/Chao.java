@@ -1,6 +1,7 @@
 package Chao;
 
 import java.awt.Graphics2D;
+import java.util.AbstractMap.SimpleEntry;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -18,6 +19,8 @@ import javax.imageio.ImageIO;
 
 public abstract class Chao {
 	public BufferedImage image;
+	public SimpleEntry<Integer, Integer> posicaoP1;
+	public SimpleEntry<Integer, Integer> posicaoP2;
     private String tipo;
 
     
