@@ -3,6 +3,7 @@ import Frutas.*;
 import Arvores.*;
 import Chao.*;
 import Imagens.*;
+import Dado.*;
 import LeituraArquivos.Escrita;
 
 
