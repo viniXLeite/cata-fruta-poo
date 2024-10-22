@@ -47,15 +47,14 @@ public class Terreno {
 		
 		try {
 			grama = ImageIO.read(getClass().getResourceAsStream("/Imagens/grama.png"));
-			pedra = ImageIO.read(getClass().getResourceAsStream("/Imagens/pedra.png"));
-			aceroleiro = ImageIO.read(getClass().getResourceAsStream("/Imagens/aceroleiro.png"));
-			abacateiro = ImageIO.read(getClass().getResourceAsStream("/Imagens/abacateiro.png"));
-			amoreira = ImageIO.read(getClass().getResourceAsStream("/Imagens/amoreira.png"));
-			coqueiro = ImageIO.read(getClass().getResourceAsStream("/Imagens/coqueiro.png"));
-			goiabeira = ImageIO.read(getClass().getResourceAsStream("/Imagens/goiabeira.png"));
-			maracuja = ImageIO.read(getClass().getResourceAsStream("/Imagens/fruta_maracuja.png"));
-			laranjeira = ImageIO.read(getClass().getResourceAsStream("/Imagens/laranjeira.png"));
-			
+            pedra = ImageIO.read(getClass().getResourceAsStream("/Imagens/pedra_ok.png"));
+            aceroleiro = ImageIO.read(getClass().getResourceAsStream("/Imagens/aceroleiro.png"));
+            abacateiro = ImageIO.read(getClass().getResourceAsStream("/Imagens/abacateiro.png"));
+            amoreira = ImageIO.read(getClass().getResourceAsStream("/Imagens/amoreira.png"));
+            coqueiro = ImageIO.read(getClass().getResourceAsStream("/Imagens/coqueiro.png"));
+            goiabeira = ImageIO.read(getClass().getResourceAsStream("/Imagens/goiabeira.png"));
+            maracuja = ImageIO.read(getClass().getResourceAsStream("/Imagens/fruta_maracuja.png"));
+            laranjeira = ImageIO.read(getClass().getResourceAsStream("/Imagens/laranjeira.png"));
 		}
 		catch(IOException e) {
 			e.printStackTrace();

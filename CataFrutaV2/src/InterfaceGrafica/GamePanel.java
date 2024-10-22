@@ -6,10 +6,11 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import Dado.*;
-import Entity.Player;
-import KeyHandler.*;
+import Dado.Dado;
+import Entidades.Player;
+import KeyHandler.KeyHandler;
 import Map.Terreno;
+
 
 
 /**
@@ -27,7 +28,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread gameThread;
 	Terreno tabuleiro;
 	KeyHandler keyH = new KeyHandler();
-	Player player = new Player(this,keyH);
+	Player player = new Player(this, keyH);
 	
 	
 	int playerX = 100;
