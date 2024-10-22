@@ -73,12 +73,16 @@ public class GamePanel extends JPanel implements Runnable{
 			lastTime = currentTime;
 			
 			if(delta >= 1) {
-				player.update();
+				update();
 				repaint();
 				delta--;
 			}
 			
 		}
+	}
+	
+	public void update() {
+		player.update();
 	}
 	
 	
@@ -117,9 +121,8 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		
 		
-		if (tabuleiro != null) {
-            tabuleiro.draw(g2);  
-        }
+		
+        tabuleiro.draw(g2);  
 		
 		player.draw(g2);
 		
