@@ -2,10 +2,6 @@ package InterfaceGrafica;
 import Map.*;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -15,8 +11,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
-import java.awt.Graphics;
-import javax.swing.JPanel;
 import javax.swing.JFrame;
 
 

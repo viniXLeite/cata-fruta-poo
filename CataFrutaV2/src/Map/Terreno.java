@@ -1,23 +1,29 @@
 package Map;
-import Frutas.*;
-import Jogador.*;
-import Arvores.*;
-import Chao.*;
-import Imagens.*;
-import Dado.*;
-import LeituraArquivos.Escrita;
-
-
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+
+import Arvores.Abacateiro;
+import Arvores.Aceroleiro;
+import Arvores.Amoreira;
+import Arvores.Arvore;
+import Arvores.Coqueiro;
+import Arvores.Goiabeira;
+import Arvores.Laranjeira;
+import Chao.Chao;
+import Chao.ChaoGramado;
+import Chao.ChaoRochoso;
+import Frutas.Abacate;
+import Frutas.Acerola;
+import Frutas.Amora;
+import Frutas.Coco;
+import Frutas.Goiaba;
+import Frutas.Laranja;
+import Frutas.Maracuja;
+import LeituraArquivos.Escrita;
 
 
 /**

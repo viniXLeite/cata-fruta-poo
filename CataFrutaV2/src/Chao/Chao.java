@@ -1,11 +1,7 @@
 package Chao;
 
-import java.awt.Graphics2D;
 import java.util.AbstractMap.SimpleEntry;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 /**
  * Classe abstrata que representa o tipo de solo presente no jogo, onde o jogador irá se mover.
