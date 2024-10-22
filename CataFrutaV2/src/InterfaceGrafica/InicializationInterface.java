@@ -1,6 +1,7 @@
 package InterfaceGrafica;
 import Map.*;
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -55,6 +56,8 @@ public class InicializationInterface {
 
 	        // Tornar a janela visível
 	        frame.setVisible(true);
+	        
+	        gp.starGameThread();
 	        
 	        
 	      

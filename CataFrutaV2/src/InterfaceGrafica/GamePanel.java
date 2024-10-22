@@ -1,6 +1,8 @@
 package InterfaceGrafica;
 import Map.*;
-
+import KeyHandler.*;
+import Dado.*;
+import Entity.Player;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -17,11 +19,21 @@ import javax.swing.JPanel;
  * a cor de fundo e métodos para configurar e desenhar o tabuleiro do jogo.</p>
  */
 
-public class GamePanel extends JPanel{
+public class GamePanel extends JPanel implements Runnable{
 	public static final int WIDTH = 767;
 	public static final int HEIGTH = 760;
 	public static final int UNIT_SIZE = 64;
+	final int FPS = 60;
+	Thread gameThread;
 	Terreno tabuleiro;
+	KeyHandler keyH = new KeyHandler();
+	Player player = new Player(this,keyH);
+	
+	
+	int playerX = 100;
+	int playerY = 100;
+	int step = Dado.rolar();
+	
 	
 	/**
      * Construtor da classe GamePanel.
@@ -34,10 +46,41 @@ public class GamePanel extends JPanel{
 		setPreferredSize(new Dimension(WIDTH, HEIGTH));
 		setBackground(Color.BLACK);
 		setFocusable(true);
+		this.addKeyListener(keyH);
 		tabuleiro = null;
 	
 		
 	}
+	
+	public void starGameThread() {
+		gameThread = new Thread(this);
+		gameThread.start();
+	}
+	
+	@Override
+	public void run(){
+		
+		double drawInterval = 1000000000/FPS;
+		double delta = 0;
+		long lastTime = System.nanoTime();
+		long currentTime;
+		
+		while(gameThread != null) {
+			currentTime = System.nanoTime();
+			
+			delta += (currentTime - lastTime)/drawInterval;
+			lastTime = currentTime;
+			
+			if(delta >= 1) {
+				player.update();
+				repaint();
+				delta--;
+			}
+			
+		}
+	}
+	
+	
 	
 	/**
      * Define o terreno a ser exibido no painel.
@@ -49,7 +92,7 @@ public class GamePanel extends JPanel{
 	
 	public void setTerreno(Terreno terreno) {
 		this.tabuleiro = terreno;
-		repaint();
+		//repaint();
 	}
 	
 	
@@ -69,9 +112,16 @@ public class GamePanel extends JPanel{
 		Graphics2D g2 = (Graphics2D)g;
 		//tabuleiro.draw(g2);
 		
+		//Graphics2D g3 = (Graphics2D)g;
+		
+		
+		
 		if (tabuleiro != null) {
             tabuleiro.draw(g2);  
         }
+		
+		player.draw(g2);
+		
 		
 		
 		

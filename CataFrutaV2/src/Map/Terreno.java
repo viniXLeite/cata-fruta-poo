@@ -1,5 +1,6 @@
 package Map;
 import Frutas.*;
+import Jogador.*;
 import Arvores.*;
 import Chao.*;
 import Imagens.*;
@@ -266,14 +267,40 @@ public class Terreno {
 	    }
 	    escrever.fechar();
 	}
-	
-	
+/*	
+	public void inicializePlayers(Jogador j1, Jogador j2) {
+		Random random = new Random();
+		boolean player1Acepted = false, player2Acepted = false;
+		
+		while(player1Acepted == false) {
+			int i = random.nextInt(linhas);
+			int j = random.nextInt(colunas);
+			
+			if(tabuleiro[i][j] instanceof ChaoGramado) {
+				ChaoGramado gramado = (ChaoGramado) tabuleiro[i][j];
+				gramado.setPlayer(new Jogador());
+				player1Acepted = true;
+			}
+		}
+		
+		while(player2Acepted == false) {
+			int i = random.nextInt(linhas);
+			int j = random.nextInt(colunas);
+			
+			if(tabuleiro[i][j] instanceof ChaoGramado) {
+				ChaoGramado gramado = (ChaoGramado) tabuleiro[i][j];
+				gramado.setPlayer(new Jogador());
+				player2Acepted = true;
+			}
+		}
+	}
+	*/
 	
 	public void draw(Graphics2D g) {
 		
 		for (int i = 0; i < linhas; i++) {
 	        for (int j = 0; j < colunas; j++) {
-
+	        	
 	            if (tabuleiro[i][j] instanceof ChaoRochoso) {
 	            	g.drawImage(pedra, i * 128, j * 128, 128, 128, null);
 	            }
@@ -321,35 +348,7 @@ public class Terreno {
 	    
 	}
 		
-		/*
-	        for (int i = 0; i < linhas; i++) {
-	            for (int j = 0; j < colunas; j++) {
-	                if (tabuleiro[i][j] instanceof ChaoGramado) {
-	                	ChaoGramado gramado = (ChaoGramado) tabuleiro[i][j];
-	                	if(gramado.getArvore() instanceof Aceroleiro) {
-	                		g.drawImage(aceroleiro, i * 128, j * 128, 128, 128, null);
-	                	}
-	                	else if(gramado.getArvore() instanceof Abacateiro) {
-	                		g.drawImage(abacateiro, i * 128, j * 128, 128, 128, null);
-	                	}
-	                	else if(gramado.getArvore() instanceof Amoreira) {
-	                		g.drawImage(amoreira, i * 128, j * 128, 128, 128, null);
-	                	}
-	                	else if(gramado.getArvore() instanceof Coqueiro) {
-	                		g.drawImage(coqueiro, i * 128, j * 128, 128, 128, null);
-	                	}
-	                	else {
-	                		g.drawImage(grama, i * 128, j * 128, 128, 128, null);
-	                	}
-	                }
-	                if(tabuleiro[i][j] instanceof ChaoRochoso) {
-	                	g.drawImage(pedra, i * 128, j * 128, 128, 128, null);
-	                    
-	                }
-	                
-	                
-	                */
-	
+		
         
         
 	}
