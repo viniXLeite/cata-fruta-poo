@@ -1,18 +1,10 @@
 package InterfaceGrafica;
 import Map.*;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+import java.awt.BorderLayout;
+import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 
 /**
@@ -55,6 +47,8 @@ public class InicializationInterface {
 
 	        // Tornar a janela visível
 	        frame.setVisible(true);
+	        
+	        gp.starGameThread();
 	        
 	        
 	      

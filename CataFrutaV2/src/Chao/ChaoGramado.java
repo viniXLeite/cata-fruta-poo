@@ -11,7 +11,6 @@ public class ChaoGramado extends Chao{
 	private Arvore arvore;
 	private Fruta fruta;
 	
-	
 	/**
      * Construtor da classe {@code ChaoGramado}.
      * Inicializa um chão gramado sem árvore e sem fruta.
@@ -61,7 +60,8 @@ public class ChaoGramado extends Chao{
     public void setFruta(Fruta fruta) {
     	this.fruta = fruta;
     }
-
+    
+  
 	
 	
 }

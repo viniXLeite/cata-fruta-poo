@@ -4,9 +4,6 @@ import InterfaceGrafica.*;
 
 import java.io.IOException;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 
 
 /**
@@ -16,7 +13,8 @@ import javax.swing.JPanel;
 
 
 public class InicializarMap {
-    public static void inicilizarTerreno(String path) throws IOException{
+    @SuppressWarnings("unused")
+	public static void inicilizarTerreno(String path) throws IOException{
 		Leitura Leitor = new Leitura(path);
 		String linha;
 		String nomeArvores[];
@@ -40,6 +38,7 @@ public class InicializarMap {
 			frutasNoChao += Integer.valueOf(palavras[2]);
 		}
 		linha = Leitor.ler();
+		@SuppressWarnings("unused")
 		int bichadas = Leitor.numeroNaLinha(linha);
 		linha = Leitor.ler();
 		int mochila = Leitor.numeroNaLinha(linha);
