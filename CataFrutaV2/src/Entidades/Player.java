@@ -1,5 +1,4 @@
 package Entidades;
-import java.awt.Color;
 
 import Dado.*;
 import java.awt.Graphics2D;
@@ -18,7 +17,7 @@ public class Player extends Entity{
 	
 	GamePanel gp;
 	KeyHandler keyH;
-	Boolean possible;
+	Boolean possible, moveUp, moveLeft, moveRight, moveDown;
 	int quantity;
 	int counter;
 	int aux;
@@ -61,35 +60,47 @@ public class Player extends Entity{
 		
 	if (posX != sizeMap  -  1) {
 	  if (Terreno.getPosition(posX + 1, posY) instanceof ChaoRochoso) {
-		  System.out.println("Pedra na direita");
+		System.out.println("Pedra na direita");
+		moveRight = false;
+	  }else {
+		moveRight = true;
 	  }
 	}
 	if (posX != 0) {
 	  if (Terreno.getPosition(posX - 1, posY) instanceof ChaoRochoso) {
-		  System.out.println("Pedra na esquerda");
+		System.out.println("Pedra na esquerda");
+		moveLeft = false;
+	  }else {
+		moveLeft = true;
 	  }
 	}
 	if (posY != 0) {
 	  if (Terreno.getPosition(posX, posY - 1) instanceof ChaoRochoso) {
-		  System.out.println("Pedra em cima");
+		System.out.println("Pedra em cima");
+		moveUp = false;
+	  }else {
+		moveUp = true;
 	  }
 	}
 	if (posY != sizeMap  -  1) {
 	  if (Terreno.getPosition(posX, posY + 1) instanceof ChaoRochoso) {
-		  System.out.println("Pedra em baixo");
+		System.out.println("Pedra em baixo");
+		moveDown = false;
+	  }else {
+		moveDown = true;
 	  }
 	}
 		
 		if (possible && this.quantity > 0) {
 			if(keyH.upPressed == true) {
-				if (y - step >= 0) {
+				if (y - step >= 0 && moveUp) {
 					direction = "up";
 					y -= step;
 					possible = false;
 					this.quantity--;
 				}
 			}
-			else if(keyH.downPressed == true) {
+			else if(keyH.downPressed == true && moveDown) {
 				if (y + step <= 760) {
 					direction = "down";
 					y += step;
@@ -97,7 +108,7 @@ public class Player extends Entity{
 					this.quantity--;
 				}
 			}
-			else if(keyH.leftPressed == true) {
+			else if(keyH.leftPressed == true && moveLeft) {
 				if (x - step >= 0) {
 					direction = "left";
 					x -= step;
@@ -105,7 +116,7 @@ public class Player extends Entity{
 					quantity--;
 				}
 			}
-			else if(keyH.rightPressed == true) {
+			else if(keyH.rightPressed == true && moveRight) {
 				if (x + step <= 767) {
 					direction = "right";
 					x += step;
