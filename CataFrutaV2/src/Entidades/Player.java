@@ -35,6 +35,10 @@ public class Player extends Entity{
 		this.quantity = 0;
 		this.counter = 0;
 		this.selector = selector;
+		this.moveDown = true;
+		this.moveLeft = true;
+		this.moveRight = true;
+		this.moveUp = true;
 		
 		if(this.selector == 1) {
 			setDefaultEminem();
