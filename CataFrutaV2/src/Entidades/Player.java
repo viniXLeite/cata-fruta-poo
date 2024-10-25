@@ -24,26 +24,41 @@ public class Player extends Entity{
 	int posX;
 	int posY;
 	int sizeMap;
+	int selector;
 	
 	
-	public Player(GamePanel gp, KeyHandler keyH) {
+	public Player(GamePanel gp, KeyHandler keyH, int selector) {
 		
 		this.gp = gp;
 		this.keyH = keyH;
 		this.possible = true;
 		this.quantity = 0;
 		this.counter = 0;
+		this.selector = selector;
 		
-		setDefaultValues();
-		getPlayerImage();
+		if(this.selector == 1) {
+			setDefaultEminem();
+			getPlayerImageEminem();
+		}
+		else {
+			setDefaultKendrick();
+			getPlayerImageKendrick();
+		}
 	}
 	
-	public void setDefaultValues() {
+	public void setDefaultEminem() {
 		x = 0;
 		y = 0;
 		step = 128;
 		direction = "down";
 		
+	}
+	
+	public void setDefaultKendrick() {
+		x = 640;
+		y = 0;
+		step = 128;
+		direction = "down";
 	}
 	
 	public void update() {
@@ -91,77 +106,157 @@ public class Player extends Entity{
 	  }
 	}
 		
-		if (possible && this.quantity > 0) {
-			if(keyH.upPressed == true) {
-				if (y - step >= 0 && moveUp) {
-					direction = "up";
-					y -= step;
-					possible = false;
-					this.quantity--;
-				}
-			}
-			else if(keyH.downPressed == true && moveDown) {
-				if (y + step <= 760) {
-					direction = "down";
-					y += step;
-					possible = false;
-					this.quantity--;
-				}
-			}
-			else if(keyH.leftPressed == true && moveLeft) {
-				if (x - step >= 0) {
-					direction = "left";
-					x -= step;
-					possible = false;
-					quantity--;
-				}
-			}
-			else if(keyH.rightPressed == true && moveRight) {
-				if (x + step <= 767) {
-					direction = "right";
-					x += step;
-					possible = false;
-					this.quantity--;
-				}
-			}
-		}
-		if (keyH.spacePressed) {
-			possible = true;
-			quantity = 3;
-		}
-		if (keyH.released) {
-			possible = true;
-		}
 		
-		spriteCounter++;
-		if(spriteCounter > 10) {
-			if(spriteNum == 1) {
-				spriteNum = 2;
+	 if(selector == 1) {
+			
+			if (possible && this.quantity > 0) {
+				if(keyH.upPressed == true) {
+					if (y - step >= 0 && moveUp) {
+						direction = "up";
+						y -= step;
+						possible = false;
+						this.quantity--;
+					}
+				}
+				else if(keyH.downPressed == true && moveDown) {
+					if (y + step <= 760) {
+						direction = "down";
+						y += step;
+						possible = false;
+						this.quantity--;
+					}
+				}
+				else if(keyH.leftPressed == true && moveLeft) {
+					if (x - step >= 0) {
+						direction = "left";
+						x -= step;
+						possible = false;
+						quantity--;
+					}
+				}
+				else if(keyH.rightPressed == true && moveRight) {
+					if (x + step <= 767) {
+						direction = "right";
+						x += step;
+						possible = false;
+						this.quantity--;
+					}
+				}
 			}
-			else if(spriteNum == 2) {
-				spriteNum = 1;
+			if (keyH.spacePressed) {
+				possible = true;
+				quantity = 3;
 			}
-			spriteCounter = 0;
-		}
+			if (keyH.released) {
+				possible = true;
+			}
+			
+			spriteCounter++;
+			if(spriteCounter > 10) {
+				if(spriteNum == 1) {
+					spriteNum = 2;
+				}
+				else if(spriteNum == 2) {
+					spriteNum = 1;
+				}
+				spriteCounter = 0;
+			}
+	 }
+	 else {
+				if (possible && this.quantity > 0) {
+					if(keyH.wPressed == true) {
+						if (y - step >= 0 && moveUp) {
+							direction = "up";
+							y -= step;
+							possible = false;
+							this.quantity--;
+						}
+					}
+					else if(keyH.sPressed == true && moveDown) {
+						if (y + step <= 760) {
+							direction = "down";
+							y += step;
+							possible = false;
+							this.quantity--;
+						}
+					}
+					else if(keyH.aPressed == true && moveLeft) {
+						if (x - step >= 0) {
+							direction = "left";
+							x -= step;
+							possible = false;
+							quantity--;
+						}
+					}
+					else if(keyH.dPressed == true && moveRight) {
+						if (x + step <= 767) {
+							direction = "right";
+							x += step;
+							possible = false;
+							this.quantity--;
+						}
+					}
+				}
+				if (keyH.spacePressed) {
+					possible = true;
+					quantity = 3;
+				}
+				if (keyH.setReleased) {
+					possible = true;
+				}
+				
+				spriteCounter++;
+				if(spriteCounter > 10) {
+					if(spriteNum == 1) {
+						spriteNum = 2;
+					}
+					else if(spriteNum == 2) {
+						spriteNum = 1;
+					}
+					spriteCounter = 0;
+				}
+		 }
+	 
 	}
 	
-	public void getPlayerImage() {
+	public void getPlayerImageEminem() {
 		
 		try {
-			up1 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_tamanho2.png"));
-			up2 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_tamanho2.png"));
-			down1 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_tamanho2.png"));
-			down2 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_tamanho2.png"));
-			left1 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_tamanho2.png"));
-			left2 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_tamanho2.png"));
-			right1 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_tamanho2.png"));
-			right2 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_tamanho2.png"));
+			up1 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_0.png"));
+			up2 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_1.png"));
+			down1 = up1;
+			down2 = up2;
+			left1 = up1;
+			left2 = up2;
+			right1 = up1;
+			right2 = up2;
 			
 		}
 		catch(IOException e){
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public void getPlayerImageKendrick() {
+		try {
+			up1 = ImageIO.read(getClass().getResourceAsStream("/Imagens/kendrick_0.png"));
+			up2 = ImageIO.read(getClass().getResourceAsStream("/Imagens/kendrick_1.png"));
+			down1 = up1;
+			down2 = up2;
+			left1 = up1;
+			left2 = up2;
+			right1 = up1;
+			right2 = up2;
+			
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 	
 	public void draw(Graphics2D g2) {
 		BufferedImage image = null;
@@ -180,7 +275,7 @@ public class Player extends Entity{
 				image = down1;
 			}
 			if(spriteNum == 2) {
-				image = down1;
+				image = down2;
 			}
 			break;
 		case "left":

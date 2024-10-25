@@ -21,14 +21,18 @@ import Map.Terreno;
  */
 
 public class GamePanel extends JPanel implements Runnable{
-	public static final int WIDTH = 900;
+	public static final int WIDTH = 767;
 	public static final int HEIGTH = 760;
 	public static final int UNIT_SIZE = 64;
+	int selectPlayer1 = 1;
+	int selectPlayer2 = 0;
 	final int FPS = 60;
 	Thread gameThread;
 	Terreno tabuleiro;
 	KeyHandler keyH = new KeyHandler();
-	Player player = new Player(this, keyH);
+	KeyHandler keyK = new KeyHandler();
+	Player player = new Player(this, keyH, selectPlayer1);
+	Player kendrick = new Player(this, keyK, selectPlayer2);
 	
 	
 	int playerX = 100;
@@ -83,6 +87,7 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	public void update() {
 		player.update();
+		kendrick.update();
 	}
 	
 	
@@ -125,6 +130,7 @@ public class GamePanel extends JPanel implements Runnable{
         tabuleiro.draw(g2);  
 		
 		player.draw(g2);
+		kendrick.draw(g2);
 		
 		
 		

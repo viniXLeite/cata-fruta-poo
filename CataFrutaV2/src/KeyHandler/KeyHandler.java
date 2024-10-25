@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener{
 	
 	public boolean upPressed, downPressed, leftPressed, rightPressed, spacePressed, released, pressed;
+	public boolean wPressed, sPressed, aPressed, dPressed, setReleased, setPressed;
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -45,6 +46,27 @@ public class KeyHandler implements KeyListener{
 			released = false;
 		}
 		
+		if(code == KeyEvent.VK_UP) {
+			wPressed = false;
+			setPressed = false;
+			setReleased = true;
+		}
+		if(code == KeyEvent.VK_DOWN) {
+			sPressed = false;
+			setPressed = false;
+			setReleased = true;
+		}
+		if(code == KeyEvent.VK_LEFT) {
+			aPressed = false;
+			setPressed = false;
+			setReleased = true;
+		}
+		if(code == KeyEvent.VK_RIGHT) {
+			dPressed = false;
+			setPressed = false;
+			setReleased = true;
+		}
+		
 		
 	}
 
@@ -81,7 +103,29 @@ public class KeyHandler implements KeyListener{
 					pressed = false;
 					released = true;
 				}
-		
+		//////////////////////////////////////
+				
+				if(code == KeyEvent.VK_UP) {
+					wPressed = false;
+					setPressed = false;
+					setReleased = true;
+				}
+				if(code == KeyEvent.VK_DOWN) {
+					sPressed = false;
+					setPressed = false;
+					setReleased = true;
+				}
+				if(code == KeyEvent.VK_LEFT) {
+					aPressed = false;
+					setPressed = false;
+					setReleased = true;
+				}
+				if(code == KeyEvent.VK_RIGHT) {
+					dPressed = false;
+					setPressed = false;
+					setReleased = true;
+				}
+
 	}
 	
 
