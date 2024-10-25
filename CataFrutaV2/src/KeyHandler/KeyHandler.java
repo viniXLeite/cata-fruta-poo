@@ -5,8 +5,8 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener{
 	
-	public boolean upPressed, downPressed, leftPressed, rightPressed, spacePressed, released, pressed;
-	public boolean wPressed, sPressed, aPressed, dPressed, setReleased, setPressed;
+	public boolean upPressed, downPressed, leftPressed, rightPressed, spacePressed, setasReleased, setasPressed;
+	public boolean wPressed, sPressed, aPressed, dPressed, teclasReleased, teclasPressed;
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -21,50 +21,48 @@ public class KeyHandler implements KeyListener{
 		
 		if(code == KeyEvent.VK_W) {
 			upPressed = true;
-			pressed = true;
-			released = false;
+			setasPressed = true;
+			setasReleased = false;
 		}
 		if(code == KeyEvent.VK_S) {
 			downPressed = true;
-			pressed = true;
-			released = false;
+			setasPressed = true;
+			setasReleased = false;
 		}
 		if(code == KeyEvent.VK_A) {
 			leftPressed = true;
-			pressed = true;
-			released = false;
+			setasPressed = true;
+			setasReleased = false;
 		}
 		if(code == KeyEvent.VK_D) {
 			rightPressed = true;
-			pressed = true;
-			released = false;
+			setasPressed = true;
+			setasReleased = false;
 		}
 
 		if(code == KeyEvent.VK_SPACE) {
 			spacePressed = true;
-			pressed = true;
-			released = false;
 		}
 		
 		if(code == KeyEvent.VK_UP) {
 			wPressed = false;
-			setPressed = false;
-			setReleased = true;
+			teclasPressed = false;
+			teclasReleased = true;
 		}
 		if(code == KeyEvent.VK_DOWN) {
 			sPressed = false;
-			setPressed = false;
-			setReleased = true;
+			teclasPressed = false;
+			teclasReleased = true;
 		}
 		if(code == KeyEvent.VK_LEFT) {
 			aPressed = false;
-			setPressed = false;
-			setReleased = true;
+			teclasPressed = false;
+			teclasReleased = true;
 		}
 		if(code == KeyEvent.VK_RIGHT) {
 			dPressed = false;
-			setPressed = false;
-			setReleased = true;
+			teclasPressed = false;
+			teclasReleased = true;
 		}
 		
 		
@@ -79,51 +77,51 @@ public class KeyHandler implements KeyListener{
 				
 				if(code == KeyEvent.VK_W) {
 					upPressed = false;
-					pressed = false;
-					released = true;
+					setasPressed = false;
+					setasReleased = true;
 				}
 				if(code == KeyEvent.VK_S) {
 					downPressed = false;
-					pressed = false;
-					released = true;
+					setasPressed = false;
+					setasReleased = true;
 				}
 				if(code == KeyEvent.VK_A) {
 					leftPressed = false;
-					pressed = false;
-					released = true;
+					setasPressed = false;
+					setasReleased = true;
 				}
 				if(code == KeyEvent.VK_D) {
 					rightPressed = false;
-					pressed = false;
-					released = true;
+					setasPressed = false;
+					setasReleased = true;
 				}
 
 				if(code == KeyEvent.VK_SPACE) {
 					spacePressed = false;
-					pressed = false;
-					released = true;
+					setasPressed = false;
+					setasReleased = true;
 				}
 		//////////////////////////////////////
 				
 				if(code == KeyEvent.VK_UP) {
 					wPressed = false;
-					setPressed = false;
-					setReleased = true;
+					teclasPressed = false;
+					teclasReleased = true;
 				}
 				if(code == KeyEvent.VK_DOWN) {
 					sPressed = false;
-					setPressed = false;
-					setReleased = true;
+					teclasPressed = false;
+					teclasReleased = true;
 				}
 				if(code == KeyEvent.VK_LEFT) {
 					aPressed = false;
-					setPressed = false;
-					setReleased = true;
+					teclasPressed = false;
+					teclasReleased = true;
 				}
 				if(code == KeyEvent.VK_RIGHT) {
 					dPressed = false;
-					setPressed = false;
-					setReleased = true;
+					teclasPressed = false;
+					teclasReleased = true;
 				}
 
 	}

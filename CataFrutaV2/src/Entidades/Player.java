@@ -147,7 +147,7 @@ public class Player extends Entity{
 				possible = true;
 				quantity = 3;
 			}
-			if (keyH.released) {
+			if (keyH.setasReleased) {
 				possible = true;
 			}
 			
@@ -201,7 +201,7 @@ public class Player extends Entity{
 					possible = true;
 					quantity = 3;
 				}
-				if (keyH.setReleased) {
+				if (keyH.teclasReleased) {
 					possible = true;
 				}
 				
