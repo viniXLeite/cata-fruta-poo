@@ -33,11 +33,11 @@ import LeituraArquivos.Escrita;
 
 public class Terreno {
 	public BufferedImage grama, pedra, aceroleiro, abacateiro, amoreira, coqueiro, goiabeira, maracuja, laranjeira;
-	private Chao[][] tabuleiro;
+	private static Chao[][] tabuleiro;
 	private int linhas, colunas;
+	//public static int aux;
 	
-	
-	
+
 	public Terreno(int m, int numPedras, String[] nomeArvores, int[] quantidadeArvores, int quantidadeMaxArvores, int frutasNoChao) throws IOException {
 		this.linhas = m;
 		this.colunas = m;
@@ -300,6 +300,15 @@ public class Terreno {
 		}
 	}
 	*/
+	
+		
+	public static Chao getPosition(int x, int y) {
+		  return tabuleiro[x][y];
+	}
+	
+	public static int sizeofMap() {
+		return tabuleiro[0].length;
+	}
 	
 	public void draw(Graphics2D g) {
 		

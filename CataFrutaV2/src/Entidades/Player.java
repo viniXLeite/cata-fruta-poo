@@ -1,13 +1,18 @@
 package Entidades;
+import java.awt.Color;
+
+import Dado.*;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import Chao.ChaoRochoso;
 import KeyHandler.*;
 
 import InterfaceGrafica.*;
+import Map.Terreno;
 
 public class Player extends Entity{
 	
@@ -16,6 +21,11 @@ public class Player extends Entity{
 	Boolean possible;
 	int quantity;
 	int counter;
+	int aux;
+	int posX;
+	int posY;
+	int sizeMap;
+	
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		
@@ -38,6 +48,38 @@ public class Player extends Entity{
 	}
 	
 	public void update() {
+		
+		if(this.quantity == 0) {
+			this.quantity = Dado.rolar();
+			System.out.println(this.quantity);
+		}
+		
+		posX = x / 128;
+		posY = y / 128;
+		sizeMap = Terreno.sizeofMap();
+		
+		
+	if (posX != sizeMap  -  1) {
+	  if (Terreno.getPosition(posX + 1, posY) instanceof ChaoRochoso) {
+		  System.out.println("Pedra na direita");
+	  }
+	}
+	if (posX != 0) {
+	  if (Terreno.getPosition(posX - 1, posY) instanceof ChaoRochoso) {
+		  System.out.println("Pedra na esquerda");
+	  }
+	}
+	if (posY != 0) {
+	  if (Terreno.getPosition(posX, posY - 1) instanceof ChaoRochoso) {
+		  System.out.println("Pedra em cima");
+	  }
+	}
+	if (posY != sizeMap  -  1) {
+	  if (Terreno.getPosition(posX, posY + 1) instanceof ChaoRochoso) {
+		  System.out.println("Pedra em baixo");
+	  }
+	}
+		
 		if (possible && this.quantity > 0) {
 			if(keyH.upPressed == true) {
 				if (y - step >= 0) {
@@ -95,14 +137,14 @@ public class Player extends Entity{
 	public void getPlayerImage() {
 		
 		try {
-			up1 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_movi_0.png"));
-			up2 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_movi_0.png"));
-			down1 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_movi_1.png"));
-			down2 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_movi_1.png"));
-			left1 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_movi_1.png"));
-			left2 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_movi_2.png"));
-			right1 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_movi_2.png"));
-			right2 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_movi_2.png"));
+			up1 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_tamanho2.png"));
+			up2 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_tamanho2.png"));
+			down1 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_tamanho2.png"));
+			down2 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_tamanho2.png"));
+			left1 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_tamanho2.png"));
+			left2 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_tamanho2.png"));
+			right1 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_tamanho2.png"));
+			right2 = ImageIO.read(getClass().getResourceAsStream("/Imagens/eminem_tamanho2.png"));
 			
 		}
 		catch(IOException e){

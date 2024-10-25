@@ -21,7 +21,7 @@ import Map.Terreno;
  */
 
 public class GamePanel extends JPanel implements Runnable{
-	public static final int WIDTH = 767;
+	public static final int WIDTH = 900;
 	public static final int HEIGTH = 760;
 	public static final int UNIT_SIZE = 64;
 	final int FPS = 60;
