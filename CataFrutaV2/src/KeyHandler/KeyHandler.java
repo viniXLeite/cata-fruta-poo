@@ -19,22 +19,22 @@ public class KeyHandler implements KeyListener{
 		// TODO Auto-generated method stub
 		int code = e.getKeyCode();
 		
-		if(code == KeyEvent.VK_W) {
+		if(code == KeyEvent.VK_UP) {
 			upPressed = true;
 			setasPressed = true;
 			setasReleased = false;
 		}
-		if(code == KeyEvent.VK_S) {
+		if(code == KeyEvent.VK_DOWN) {
 			downPressed = true;
 			setasPressed = true;
 			setasReleased = false;
 		}
-		if(code == KeyEvent.VK_A) {
+		if(code == KeyEvent.VK_LEFT) {
 			leftPressed = true;
 			setasPressed = true;
 			setasReleased = false;
 		}
-		if(code == KeyEvent.VK_D) {
+		if(code == KeyEvent.VK_RIGHT) {
 			rightPressed = true;
 			setasPressed = true;
 			setasReleased = false;
@@ -44,22 +44,22 @@ public class KeyHandler implements KeyListener{
 			spacePressed = true;
 		}
 		
-		if(code == KeyEvent.VK_UP) {
+		if(code == KeyEvent.VK_W) {
 			wPressed = true;
 			teclasPressed = false;
 			teclasReleased = true;
 		}
-		if(code == KeyEvent.VK_DOWN) {
+		if(code == KeyEvent.VK_S) {
 			sPressed = true;
 			teclasPressed = false;
 			teclasReleased = true;
 		}
-		if(code == KeyEvent.VK_LEFT) {
+		if(code == KeyEvent.VK_A) {
 			aPressed = true;
 			teclasPressed = false;
 			teclasReleased = true;
 		}
-		if(code == KeyEvent.VK_RIGHT) {
+		if(code == KeyEvent.VK_D) {
 			dPressed = true;
 			teclasPressed = false;
 			teclasReleased = true;
@@ -75,22 +75,22 @@ public class KeyHandler implements KeyListener{
 				int code = e.getKeyCode();
 
 				
-				if(code == KeyEvent.VK_W) {
+				if(code == KeyEvent.VK_UP) {
 					upPressed = false;
 					setasPressed = false;
 					setasReleased = true;
 				}
-				if(code == KeyEvent.VK_S) {
+				if(code == KeyEvent.VK_DOWN) {
 					downPressed = false;
 					setasPressed = false;
 					setasReleased = true;
 				}
-				if(code == KeyEvent.VK_A) {
+				if(code == KeyEvent.VK_LEFT) {
 					leftPressed = false;
 					setasPressed = false;
 					setasReleased = true;
 				}
-				if(code == KeyEvent.VK_D) {
+				if(code == KeyEvent.VK_RIGHT) {
 					rightPressed = false;
 					setasPressed = false;
 					setasReleased = true;
@@ -103,22 +103,22 @@ public class KeyHandler implements KeyListener{
 				}
 		//////////////////////////////////////
 				
-				if(code == KeyEvent.VK_UP) {
+				if(code == KeyEvent.VK_W) {
 					wPressed = false;
 					teclasPressed = false;
 					teclasReleased = true;
 				}
-				if(code == KeyEvent.VK_DOWN) {
+				if(code == KeyEvent.VK_S) {
 					sPressed = false;
 					teclasPressed = false;
 					teclasReleased = true;
 				}
-				if(code == KeyEvent.VK_LEFT) {
+				if(code == KeyEvent.VK_A) {
 					aPressed = false;
 					teclasPressed = false;
 					teclasReleased = true;
 				}
-				if(code == KeyEvent.VK_RIGHT) {
+				if(code == KeyEvent.VK_D) {
 					dPressed = false;
 					teclasPressed = false;
 					teclasReleased = true;

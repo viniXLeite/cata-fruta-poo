@@ -114,7 +114,7 @@ public class Player extends Entity{
 	 if(selector == 1) {
 			
 			if (possible && this.quantity > 0) {
-				if(keyH.upPressed == true) {
+				if(keyH.wPressed == true) {
 					if (y - step >= 0 && moveUp) {
 						direction = "up";
 						y -= step;
@@ -122,7 +122,7 @@ public class Player extends Entity{
 						this.quantity--;
 					}
 				}
-				else if(keyH.downPressed == true && moveDown) {
+				else if(keyH.sPressed == true && moveDown) {
 					if (y + step <= 760) {
 						direction = "down";
 						y += step;
@@ -130,7 +130,7 @@ public class Player extends Entity{
 						this.quantity--;
 					}
 				}
-				else if(keyH.leftPressed == true && moveLeft) {
+				else if(keyH.aPressed == true && moveLeft) {
 					if (x - step >= 0) {
 						direction = "left";
 						x -= step;
@@ -138,7 +138,7 @@ public class Player extends Entity{
 						quantity--;
 					}
 				}
-				else if(keyH.rightPressed == true && moveRight) {
+				else if(keyH.dPressed == true && moveRight) {
 					if (x + step <= 767) {
 						direction = "right";
 						x += step;
@@ -151,7 +151,7 @@ public class Player extends Entity{
 				possible = true;
 				quantity = 3;
 			}
-			if (keyH.setasReleased) {
+			if (keyH.teclasReleased) {
 				possible = true;
 			}
 			
@@ -168,7 +168,7 @@ public class Player extends Entity{
 	 }
 	 else {
 				if (possible && this.quantity > 0) {
-					if(keyH.wPressed == true) {
+					if(keyH.upPressed == true) {
 						if (y - step >= 0 && moveUp) {
 							direction = "up";
 							y -= step;
@@ -176,7 +176,7 @@ public class Player extends Entity{
 							this.quantity--;
 						}
 					}
-					else if(keyH.sPressed == true && moveDown) {
+					else if(keyH.downPressed == true && moveDown) {
 						if (y + step <= 760) {
 							direction = "down";
 							y += step;
@@ -184,7 +184,7 @@ public class Player extends Entity{
 							this.quantity--;
 						}
 					}
-					else if(keyH.aPressed == true && moveLeft) {
+					else if(keyH.leftPressed == true && moveLeft) {
 						if (x - step >= 0) {
 							direction = "left";
 							x -= step;
@@ -192,7 +192,7 @@ public class Player extends Entity{
 							quantity--;
 						}
 					}
-					else if(keyH.dPressed == true && moveRight) {
+					else if(keyH.rightPressed == true && moveRight) {
 						if (x + step <= 767) {
 							direction = "right";
 							x += step;
@@ -205,7 +205,7 @@ public class Player extends Entity{
 					possible = true;
 					quantity = 3;
 				}
-				if (keyH.teclasReleased) {
+				if (keyH.setasReleased) {
 					possible = true;
 				}
 				

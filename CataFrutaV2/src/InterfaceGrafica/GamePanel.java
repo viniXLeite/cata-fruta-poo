@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Terreno tabuleiro;
 	KeyHandler keyH = new KeyHandler();
 	KeyHandler keyK = new KeyHandler();
-	Player player = new Player(this, keyH, selectPlayer1);
+	Player eminem = new Player(this, keyH, selectPlayer1);
 	Player kendrick = new Player(this, keyK, selectPlayer2);
 	
 	
@@ -52,6 +52,7 @@ public class GamePanel extends JPanel implements Runnable{
 		setBackground(Color.BLACK);
 		setFocusable(true);
 		this.addKeyListener(keyH);
+		this.addKeyListener(keyK);
 		tabuleiro = null;
 	
 		
@@ -85,9 +86,53 @@ public class GamePanel extends JPanel implements Runnable{
 		}
 	}
 	
+	public boolean checkColison(Player eminem, Player kendrick) {
+		int player1Right = eminem.x + 128;
+	    int player1Bottom = eminem.y + 128;
+	    int player2Right = kendrick.x + 128;
+	    int player2Bottom = kendrick.y + 128;
+
+	    boolean collisionX = eminem.x < player2Right && player1Right > kendrick.x;
+	    boolean collisionY = eminem.y < player2Bottom && player1Bottom > kendrick.y;
+	    
+	    
+
+	    if(collisionX && collisionY) {
+	    	int offSet = 128;
+	    	
+	    	int boardSize = Terreno.sizeofMap() * offSet;
+	    	
+	    	if(eminem.x < kendrick.x) {
+	    		eminem.x = Math.max(eminem.x - offSet, 0);
+	    		kendrick.x = Math.min(kendrick.x + offSet, boardSize - offSet);
+	    	}
+	    	else {
+	    		kendrick.x = Math.max(eminem.x - offSet, 0);
+	    		eminem.x = Math.min(eminem.x + offSet, boardSize - offSet);
+	    	}
+	    	
+	    	if(eminem.y < kendrick.y) {
+	    		eminem.y = Math.max(eminem.y - offSet, 0);
+	    		kendrick.y = Math.min(kendrick.y + offSet, boardSize - offSet);
+	    	}
+	    	else {
+	    		kendrick.y = Math.max(eminem.y - offSet, 0);
+	    		eminem.y = Math.min(eminem.y + offSet, boardSize - offSet);
+	    	}
+	    	
+	    	return true;
+	    }
+	    
+	    return false;
+	}
+	
 	public void update() {
-		player.update();
+		eminem.update();
 		kendrick.update();
+		
+		if(checkColison(eminem, kendrick)) {
+			System.out.println("COLISAO");
+		}
 	}
 	
 	
@@ -129,7 +174,7 @@ public class GamePanel extends JPanel implements Runnable{
 		
         tabuleiro.draw(g2);  
 		
-		player.draw(g2);
+		eminem.draw(g2);
 		kendrick.draw(g2);
 		
 		
