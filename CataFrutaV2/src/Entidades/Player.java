@@ -67,6 +67,11 @@ public class Player extends Entity {
 
 		if (this.quantity == 0) {
 			this.quantity = Dado.rolar();
+			if (selector == 1) {
+				System.out.print("Passos do EMINEM: ");
+			}else {
+				System.out.print("Passos do KENDRICK: ");
+			}
 			System.out.println(this.quantity);
 		}
 
