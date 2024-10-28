@@ -46,23 +46,23 @@ public class KeyHandler implements KeyListener{
 		
 		if(code == KeyEvent.VK_W) {
 			wPressed = true;
-			teclasPressed = false;
-			teclasReleased = true;
+			teclasPressed = true;
+			teclasReleased = false;
 		}
 		if(code == KeyEvent.VK_S) {
 			sPressed = true;
-			teclasPressed = false;
-			teclasReleased = true;
+			teclasPressed = true;
+			teclasReleased = false;
 		}
 		if(code == KeyEvent.VK_A) {
 			aPressed = true;
-			teclasPressed = false;
-			teclasReleased = true;
+			teclasPressed = true;
+			teclasReleased = false;
 		}
 		if(code == KeyEvent.VK_D) {
 			dPressed = true;
-			teclasPressed = false;
-			teclasReleased = true;
+			teclasPressed = true;
+			teclasReleased = false;
 		}
 		
 		
