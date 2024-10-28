@@ -29,6 +29,7 @@ public class GamePanel extends JPanel implements Runnable{
 	final int FPS = 60;
 	Thread gameThread;
 	Terreno tabuleiro;
+	private int currentPlayerTurn = 1;
 	KeyHandler keyH = new KeyHandler();
 	KeyHandler keyK = new KeyHandler();
 	Player eminem = new Player(this, keyH, selectPlayer1);
@@ -86,6 +87,11 @@ public class GamePanel extends JPanel implements Runnable{
 		}
 	}
 	
+	public void switchTurn() {
+        currentPlayerTurn = (currentPlayerTurn == 1) ? 2 : 1;
+    }
+
+	
 	public boolean checkColison(Player eminem, Player kendrick) {
 		int player1Right = eminem.x + 128;
 	    int player1Bottom = eminem.y + 128;
@@ -126,15 +132,30 @@ public class GamePanel extends JPanel implements Runnable{
 	    return false;
 	}
 	
-	public void update() {
-		eminem.update();
-		kendrick.update();
+public void update() {
+		
+		
+		if(this.currentPlayerTurn == 1) {
+			eminem.update();
+			if(eminem.quantity == 0) {
+				switchTurn();
+			}
+		}
+		
+		else {
+			kendrick.update();
+			if(kendrick.quantity == 0) {
+				switchTurn();
+			}
+		}
+		
+		
+		
 		
 		if(checkColison(eminem, kendrick)) {
 			System.out.println("COLISAO");
 		}
 	}
-	
 	
 	
 	/**

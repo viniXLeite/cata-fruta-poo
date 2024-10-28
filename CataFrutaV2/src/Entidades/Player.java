@@ -4,9 +4,16 @@ import Dado.*;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import Mochila.*;
 
 import javax.imageio.ImageIO;
 
+import Arvores.Abacateiro;
+import Arvores.Aceroleiro;
+import Arvores.Amoreira;
+import Arvores.Coqueiro;
+import Arvores.Laranjeira;
+import Chao.ChaoGramado;
 import Chao.ChaoRochoso;
 import KeyHandler.*;
 
@@ -18,11 +25,12 @@ public class Player extends Entity{
 	GamePanel gp;
 	KeyHandler keyH;
 	Boolean possible, moveUp, moveLeft, moveRight, moveDown;
-	int quantity;
+	Mochila bag;
+	public int quantity;
 	int counter;
 	int aux;
-	int posX;
-	int posY;
+	public int posX;
+	public int posY;
 	int sizeMap;
 	int selector;
 	
@@ -39,6 +47,7 @@ public class Player extends Entity{
 		this.moveLeft = true;
 		this.moveRight = true;
 		this.moveUp = true;
+		this.bag = new Mochila(10);
 		
 		if(this.selector == 1) {
 			setDefaultEminem();
@@ -75,8 +84,35 @@ public class Player extends Entity{
 		posX = x / 128;
 		posY = y / 128;
 		sizeMap = Terreno.sizeofMap();
+		/*
+		ChaoGramado gramado = (ChaoGramado) Terreno.getPosition(posX,  posY);
+	    if(gramado.getArvore() != null) {
+	    	
+	    	String nomeArv;
+	    	
+	    	if(gramado.getArvore() instanceof Abacateiro) {
+	    		nomeArv = "acerola";
+	    	}
+	    	else if(gramado.getArvore() instanceof Aceroleiro) {
+	    		nomeArv = "abacate";
+	    	}
+	    	else if(gramado.getArvore() instanceof Amoreira) {
+	    		nomeArv = "amora";
+	    	}
+	    	else if(gramado.getArvore() instanceof Coqueiro) {
+	    		nomeArv = "coco";
+	    	}
+	    	else if(gramado.getArvore() instanceof Laranjeira) {
+	    		nomeArv = "laranja";
+	    	}else {
+	    		nomeArv = "goiaba";
+	    	}
+	    		
+	    	Terreno.addFruitinMyBag(bag, nomeArv);
+	    	System.out.println(nomeArv);
+	    }
 		
-		
+		*/
 	if (posX != sizeMap  -  1) {
 	  if (Terreno.getPosition(posX + 1, posY) instanceof ChaoRochoso) {
 		System.out.println("Pedra na direita");

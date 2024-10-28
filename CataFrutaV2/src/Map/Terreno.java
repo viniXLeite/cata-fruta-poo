@@ -24,6 +24,7 @@ import Frutas.Goiaba;
 import Frutas.Laranja;
 import Frutas.Maracuja;
 import LeituraArquivos.Escrita;
+import Mochila.*;
 
 
 /**
@@ -308,6 +309,30 @@ public class Terreno {
 	
 	public static int sizeofMap() {
 		return tabuleiro[0].length;
+	}
+	
+	public static void addFruitinMyBag(Mochila p1, String key) {
+	    p1.top++;
+	    switch (key) {
+	        case "acerola":
+	            p1.mochila[p1.top++] = new Acerola(key);
+	            break;
+	        case "abacate":
+	            p1.mochila[p1.top++] = new Abacate(key);
+	            break;
+	        case "laranja":
+	            p1.mochila[p1.top++] = new Laranja(key);
+	            break;
+	        case "coco":
+	            p1.mochila[p1.top++] = new Coco(key);
+	            break;
+	        case "amora":
+	            p1.mochila[p1.top++] = new Amora(key);
+	            break;
+	        default:
+	            p1.mochila[p1.top++] = new Goiaba(key);
+	            break;
+	    }
 	}
 	
 	public void draw(Graphics2D g) {
