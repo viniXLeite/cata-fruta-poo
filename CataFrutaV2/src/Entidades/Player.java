@@ -13,18 +13,57 @@ import KeyHandler.*;
 import InterfaceGrafica.*;
 import Map.Terreno;
 
+/**
+ * A classe {@code Player} representa um jogador em um jogo.
+ * 
+ * <p>Essa classe estende a classe {@link Entity} e inclui informações específicas
+ * para manipular o jogador, como a posição, quantidade de movimentos restantes,
+ * direção, seleção de personagem (Eminem ou Kendrick), e sprites associados.
+ * Além disso, controla a lógica de movimento, como colisão com obstáculos e atualização
+ * da imagem de animação baseada na direção e na quantidade de passos.
+ * </p>
+ */
+
 public class Player extends Entity {
 
-	GamePanel gp;
-	KeyHandler keyH;
-	Boolean possible, moveUp, moveLeft, moveRight, moveDown;
-	public int quantity;
-	int counter;
-	int aux;
-	int posX;
-	int posY;
-	int sizeMap;
-	int selector;
+	/**
+     * Painel do jogo onde o jogador será renderizado.
+     */
+    GamePanel gp;
+
+    /**
+     * Manipulador de teclas para capturar as entradas do jogador.
+     */
+    KeyHandler keyH;
+
+    /**
+     * Controle de movimento e estado do jogador:
+     * - {@code possible}: determina se o jogador pode mover-se no próximo turno.
+     * - {@code moveUp}, {@code moveDown}, {@code moveLeft}, {@code moveRight}: 
+     *   controle de movimento nas direções.
+     * - {@code quantity}: passos restantes do jogador.
+     */
+    Boolean possible, moveUp, moveLeft, moveRight, moveDown;
+    public int quantity;
+
+    /**
+     * Informações auxiliares para cálculo de posição e lógica de movimento:
+     * - {@code counter}, {@code aux}: variáveis auxiliares de controle.
+     * - {@code posX}, {@code posY}: posição do jogador em blocos no mapa.
+     * - {@code sizeMap}: tamanho do mapa do jogo.
+     * - {@code selector}: escolha do personagem (1 para Eminem, outro valor para Kendrick).
+     */
+    int counter, aux, posX, posY, sizeMap, selector;
+
+	/**
+     * Construtor da classe {@code Player}.
+     * Inicializa o jogador com as configurações iniciais e carrega os sprites
+     * do personagem escolhido.
+     * 
+     * @param gp o painel de jogo onde o jogador será renderizado
+     * @param keyH o manipulador de teclas para capturar entradas do jogador
+     * @param selector indica o personagem selecionado (1 para Eminem, outro valor para Kendrick)
+     */
 
 	public Player(GamePanel gp, KeyHandler keyH, int selector) {
 
@@ -48,6 +87,10 @@ public class Player extends Entity {
 		}
 	}
 
+	/**
+     * Define as configurações padrão para o personagem Eminem.
+     */
+
 	public void setDefaultEminem() {
 		x = 0;
 		y = 0;
@@ -56,12 +99,24 @@ public class Player extends Entity {
 
 	}
 
+	/**
+     * Define as configurações padrão para o personagem Kendrick.
+     */
+
 	public void setDefaultKendrick() {
 		x = 640;
 		y = 0;
 		step = 128;
 		direction = "down";
 	}
+
+	/**
+     * Atualiza o estado do jogador, incluindo sua posição, colisão com obstáculos e animação.
+     * 
+     * <p>Essa função realiza a rolagem de dados para determinar o número de passos que o jogador pode andar
+     * e utiliza as entradas do teclado para alterar a posição do jogador. Verifica colisões com obstáculos
+     * no mapa para impedir que o jogador se mova para determinadas direções.</p>
+     */
 
 	public void update() {
 
@@ -204,6 +259,10 @@ public class Player extends Entity {
 
 	}
 
+	/**
+     * Carrega as imagens do personagem Eminem para as diferentes direções.
+     */
+
 	public void getPlayerImageEminem() {
 
 		try {
@@ -221,6 +280,10 @@ public class Player extends Entity {
 		}
 	}
 
+	/**
+     * Carrega as imagens do personagem Kendrick para as diferentes direções.
+     */
+
 	public void getPlayerImageKendrick() {
 		try {
 			up1 = ImageIO.read(getClass().getResourceAsStream("/Imagens/kendrick_0.png"));
@@ -236,6 +299,12 @@ public class Player extends Entity {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+     * Desenha o jogador na tela com base em sua direção e quadro de animação atual.
+     * 
+     * @param g2 o contexto gráfico onde o jogador será desenhado
+     */
 
 	public void draw(Graphics2D g2) {
 		BufferedImage image = null;

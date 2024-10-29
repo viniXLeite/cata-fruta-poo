@@ -10,6 +10,7 @@ import Dado.Dado;
 import Entidades.Player;
 import KeyHandler.KeyHandler;
 import Map.Terreno;
+import java.util.Random;
 
 
 
@@ -91,6 +92,12 @@ public class GamePanel extends JPanel implements Runnable{
         currentPlayerTurn = (currentPlayerTurn == 1) ? 2 : 1;
     }
 
+	public int getRandomPosition(int size) {
+		Random rand = new Random();
+		int val = rand.nextInt(size);
+		return val;
+	}
+
 	
 	public boolean checkColison(Player eminem, Player kendrick) {
 		int player1Right = eminem.x + 128;
@@ -107,6 +114,25 @@ public class GamePanel extends JPanel implements Runnable{
 	    	int offSet = 128;
 	    	
 	    	int boardSize = Terreno.sizeofMap() * offSet;
+			@SuppressWarnings("unused")
+			int playerEmpurrado;
+			int val;
+
+			if (this.currentPlayerTurn == 1) {
+				System.out.println("FRUTAS DO KENDRICK CAIRAM");
+				playerEmpurrado = 2;
+				val = getRandomPosition(Terreno.sizeofMap());
+				System.out.println(val);
+				System.out.println("POSICAO DA FRUTA EM X: "+ val * 128);
+				System.out.println("POSICAO DA FRUTA EM Y: "+ val * 128);
+			}else {
+				System.out.println("FRUTAS DO EMINEM CAIRAM");
+				playerEmpurrado = 1;
+				val = getRandomPosition(Terreno.sizeofMap());
+				System.out.println(val);
+				System.out.println("POSICAO DA FRUTA EM X: "+ val * 128);
+				System.out.println("POSICAO DA FRUTA EM Y: "+ val * 128);
+			}
 	    	
 	    	if(eminem.x < kendrick.x) {
 	    		eminem.x = Math.max(eminem.x - offSet, 0);

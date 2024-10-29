@@ -3,6 +3,16 @@ package KeyHandler;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * A classe {@code KeyHandler} implementa a interface {@link KeyListener} para capturar e gerenciar
+ * eventos de teclado, permitindo a interação do usuário com o jogo ou a aplicação.
+ * 
+ * <p>Esta classe monitora o estado de teclas específicas (como teclas de movimento) e armazena
+ * esses estados em variáveis booleanas, que outras classes podem acessar para verificar se uma
+ * tecla específica foi pressionada ou liberada.</p>
+ * 
+ */
+
 public class KeyHandler implements KeyListener{
 	
 	public boolean upPressed, downPressed, leftPressed, rightPressed, spacePressed, setasReleased, setasPressed;
@@ -10,13 +20,18 @@ public class KeyHandler implements KeyListener{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+     * Chamado quando uma tecla é pressionada. Define as variáveis booleanas
+     * correspondentes para {@code true} se a tecla estiver em uso.
+     *
+     * @param e o evento de tecla pressionada
+     */
+
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
 		int code = e.getKeyCode();
 		
 		if(code == KeyEvent.VK_UP) {
@@ -68,10 +83,16 @@ public class KeyHandler implements KeyListener{
 		
 	}
 
+	/**
+     * Chamado quando uma tecla é liberada. Define as variáveis booleanas
+     * correspondentes para {@code false} se a tecla foi liberada.
+     *
+     * @param e o evento de tecla liberada
+     */
+
 	@Override
 	public void keyReleased(KeyEvent e) {
 		
-		// TODO Auto-generated method stub
 				int code = e.getKeyCode();
 
 				

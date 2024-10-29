@@ -4,6 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 
+/**
+ * A classe {@code JanelaPrincipal} é responsável por criar e exibir a janela inicial do jogo.
+ * 
+ * <p>Essa janela apresenta opções para o usuário iniciar um novo jogo, carregar um jogo existente
+ * ou acessar configurações. A janela inicial é a primeira interface que o jogador vê ao abrir o jogo.
+ * </p>
+ */
+
 public class JanelaPrincipal extends JFrame {
     
     // Componentes principais
@@ -12,6 +20,11 @@ public class JanelaPrincipal extends JFrame {
     private JTextArea terrenoExemplo, statusPanel;
     private JTextField jogador1Nome, jogador2Nome;
     private JButton iniciarJogoButton;
+
+    /**
+     * Constrói a janela inicial do jogo, configurando o título, tamanho e os componentes visuais,
+     * como botões e rótulos, para a interação do usuário.
+     */
 
     public JanelaPrincipal() {
         setTitle("Criador de Terreno e Iniciar Jogo");
@@ -71,7 +84,9 @@ public class JanelaPrincipal extends JFrame {
         iniciarJogoButton.addActionListener(e -> iniciarJogo());
     }
 
-    // Método para gerar um exemplo de terreno
+    /**
+     * A partir do clique do botão cria o terreno que sera utilizado no jogo
+     */
     private void gerarTerreno() {
         String config = inputTerrenoConfig.getText();
         if (config.isEmpty()) {
@@ -84,7 +99,10 @@ public class JanelaPrincipal extends JFrame {
         terrenoExemplo.setText(exemploTerreno);
     }
 
-    // Método para salvar o terreno em um arquivo
+    /**
+     * Ao clicar no botão o terreno será salvo em um arquivo .txt para poder
+     * ser reutilizado em outras partidas ou analisado
+     */
     private void salvarTerreno() {
         String config = inputTerrenoConfig.getText();
         if (config.isEmpty()) {
@@ -105,7 +123,9 @@ public class JanelaPrincipal extends JFrame {
         }
     }
 
-    // Método para carregar o terreno de um arquivo
+    /**
+     * O clique o botão abrirá uma aba de seleção para escolha do terreno que será utilizado
+     */
     private void carregarTerreno() {
         JFileChooser fileChooser = new JFileChooser();
         int option = fileChooser.showOpenDialog(this);
@@ -125,7 +145,9 @@ public class JanelaPrincipal extends JFrame {
         }
     }
 
-    // Método para iniciar o jogo
+    /**
+     * Esse método serve para iniciar o jogo a partir do clique do botão
+     */
     private void iniciarJogo() {
         String nomeJogador1 = jogador1Nome.getText();
         String nomeJogador2 = jogador2Nome.getText();

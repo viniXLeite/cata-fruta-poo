@@ -38,7 +38,6 @@ public class InicializarMap {
 			frutasNoChao += Integer.valueOf(palavras[2]);
 		}
 		linha = Leitor.ler();
-		@SuppressWarnings("unused")
 		int bichadas = Leitor.numeroNaLinha(linha);
 		linha = Leitor.ler();
 		int mochila = Leitor.numeroNaLinha(linha);
